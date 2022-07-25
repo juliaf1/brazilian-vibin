@@ -1,20 +1,9 @@
-require('dotenv').config();
-const { DATABASE_URL, ADMIN_PASS } = process.env;
-
-const Sequelize = require('sequelize');
-const sequelize = new Sequelize(DATABASE_URL, {
-    dialect: 'postgres',
-    dialectOptions: {
-        ssl: {
-            rejectUnauthorized: false
-        },
-    },
-});
+const { sequelize, secrets } = require('./config.js');
 
 const seed = (req, res) => {
     const { password } = req.body;
 
-    if (password == ADMIN_PASS) {
+    if (password == secrets.ADMIN_PASS) {
         console.log('Running seeds');
 
         sequelize.query(`
