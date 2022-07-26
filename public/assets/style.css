@@ -53,7 +53,7 @@ a {
 }
 
 .xlg-font {
-    font-size: 64px;
+    font-size: calc(55px + 0.390625vw);
 }
 
 .text-center {
@@ -70,6 +70,10 @@ a {
 
 .mb-lg {
     margin-bottom: 20px;
+}
+
+.no-wrap {
+    white-space: nowrap;
 }
 
 /* Reusable Components */
