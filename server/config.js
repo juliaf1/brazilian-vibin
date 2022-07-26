@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { PORT, DATABASE_URL, ADMIN_PASS } = process.env;
+const { PORT, DATABASE_URL, ADMIN_PASS, SPOTIFY_TOKEN } = process.env;
 
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize(DATABASE_URL, {
@@ -13,5 +13,5 @@ const sequelize = new Sequelize(DATABASE_URL, {
 
 module.exports = {
     sequelize,
-    secrets: { PORT, ADMIN_PASS }
+    secrets: { PORT, ADMIN_PASS, SPOTIFY_TOKEN }
 };
