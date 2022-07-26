@@ -228,7 +228,8 @@ body, a, p {
 .playlist-container {
     width: 100vw;
     min-height: 100vh;
-    background-color: #FFF8EB;
+    background: rgb(255,248,235);
+    background: radial-gradient(circle, rgba(255,248,235,1) 0%, rgba(255,241,214,1) 93%, rgba(255,241,214,1) 100%);
 }
 
 .playlist-content {
@@ -245,8 +246,8 @@ body, a, p {
 .playlist-card {
     border: 1px solid #131f3e;
     border-radius: 2px;
-    padding: 24px 20px;
-    min-height: calc(100vh - 200px);
+    padding: 30px 20px 20px;
+    min-height: calc(100vh - 210px);
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -275,11 +276,12 @@ body, a, p {
 }
 
 .artist-container {
-    max-width: 380px;
+    max-width: 400px;
 }
 
 .track-container {
-    max-width: 640px;
+    max-width: 60%;
+    min-width: 640px;
 }
 
 .track-genres {
