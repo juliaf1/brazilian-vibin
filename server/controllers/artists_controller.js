@@ -1,22 +1,19 @@
-const { sequelize, secrets } = require('../config.js');
 const axios = require('axios');
+const { sequelize } = require('../config.js');
+const { authorizationHeaders } = require('../services/spotify.js');
 
 const spotifyUrl = 'https://api.spotify.com/v1';
 
-tokenHeaders = {
-    headers: {
-        'Authorization': `Bearer ${secrets.SPOTIFY_TOKEN}`,
-    },
-};
-
 const random = async (req, res) => {
-    const { genres } = req.query;
+    // const { genres } = req.query;
     const maxSize = req.query.maxSize || 5;
 
     const ids = await sequelize.query(`select spotify_id from artists`);
     
     let artists = [];
     let randomIds = [];
+
+    const headers = await authorizationHeaders();
 
     while (randomIds.length < maxSize) {
         let id = ids[0].sample().spotify_id;
@@ -29,15 +26,14 @@ const random = async (req, res) => {
         let artist = {};
 
         try {
-            const tracksRes = await axios.get(`${spotifyUrl}/artists/${id}/top-tracks?market=BR`, tokenHeaders);
-            const artistRes = await axios.get(`${spotifyUrl}/artists/${id}`, tokenHeaders)
+            const tracksRes = await axios.get(`${spotifyUrl}/artists/${id}/top-tracks?market=BR`, headers);
+            const artistRes = await axios.get(`${spotifyUrl}/artists/${id}`, headers)
             artist.track = tracksRes.data.tracks.sample();
             artist.info = artistRes.data;
+            artists.push(artist);
         } catch {
             console.log('Error finding artist and track');
         };
-        
-        artists.push(artist);
     };
 
     res.status(200).send(artists);
