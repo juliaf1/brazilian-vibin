@@ -247,7 +247,7 @@ body, a, p {
     border: 1px solid #131f3e;
     border-radius: 2px;
     padding: 30px 20px 20px;
-    min-height: calc(100vh - 210px);
+    min-height: calc(100vh - 225px);
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -280,8 +280,7 @@ body, a, p {
 }
 
 .track-container {
-    max-width: 60%;
-    min-width: 640px;
+    max-width: 600px;
 }
 
 .track-genres {
