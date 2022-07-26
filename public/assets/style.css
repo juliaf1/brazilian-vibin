@@ -4,10 +4,9 @@ body {
     margin: 0;
 }
 
-h1 {
+h1, h2, h3, p {
     margin: 0;
     line-height: 1.1;
-    text-transform: uppercase;
 }
 
 a {
@@ -48,6 +47,14 @@ body, a, p {
     color: #FFF8EB;
 }
 
+.dark-color {
+    color: #131f3e;
+}
+
+.primary-color {
+    color: #d36582;
+};
+
 .sm-font {
     font-size: 16px;
 }
@@ -57,11 +64,31 @@ body, a, p {
 }
 
 .lg-font {
+    font-size: 40px;
+}
+
+.xlg-font {
     font-size: calc(56px + 0.390625vw);
 }
 
 .text-center {
     text-align: center;
+}
+
+.mt-sm {
+    margin-top: 6px;
+}
+
+.mt-md {
+    margin-top: 12px;
+}
+
+.mt-lg {
+    margin-top: 20px;
+}
+
+.mt-xlg {
+    margin-top: 40px;
 }
 
 .mb-sm {
@@ -76,8 +103,20 @@ body, a, p {
     margin-bottom: 20px;
 }
 
+.mb-xlg {
+    margin-bottom: 40px;
+}
+
 .no-wrap {
     white-space: nowrap;
+}
+
+.upcase {
+    text-transform: uppercase;
+}
+
+.vertical {
+    writing-mode: vertical-rl;
 }
 
 /* Reusable Components */
@@ -171,19 +210,87 @@ body, a, p {
 
 /* Custom layout */
 
-.main {
+.home-container {
     width: 100vw;
     height: 100vh;
     background: radial-gradient(100% 225% at 0% 100%, #FF04F5 0%, #001AFF 100%), linear-gradient(270deg, #FB00A5 50%, #0400CB 100%), linear-gradient(300deg, #8DADA4 0%, #32DE81 100%), linear-gradient(7deg, #1DADFE 0%, #16009A 50%);
     background-blend-mode: color-dodge, color-burn, color-burn, normal;
 }
 
-.home-container {
+.home-content {
     padding: 40px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: calc(100% - 80px);
+}
+
+.playlist-container {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #FFF8EB;
+}
+
+.playlist-content {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.playlist-cards {
+    padding: 24px 0;
+}
+
+.playlist-card {
+    border: 1px solid #131f3e;
+    border-radius: 2px;
+    padding: 24px 20px;
+    min-height: calc(100vh - 200px);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.spotify-logo {
+    height: 30px;
+    margin-right: 8px;
+    transition: all 0.3s ease 0s;
+}
+
+.spotify-logo:hover {
+    transform: translateY(-5px);
+}
+
+.artist-img {
+    height: 180px;
+    border-radius: 2px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.followers-detail {
+    display: flex;
+    align-items: center;
+    margin-left: 8px;
+}
+
+.artist-container {
+    max-width: 380px;
+}
+
+.track-container {
+    max-width: 640px;
+}
+
+.track-genres {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.track-genres h3 {
+    transition: all 4s ease-in-out 0s;
 }
 
 /* Responsive */
