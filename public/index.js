@@ -165,6 +165,24 @@ const chooseTrack = evt => {
     cards[id - 1].classList.remove('d-none');
 };
 
+const getRandomTrack = () => {
+    let track = document.querySelector('#randomTrack');
+    if (!track) {
+      axios.get('/api/randomTrack')
+        .then(res => {
+          const { id } = res.data;
+          track = `<iframe class="draggable" id="randomTrack" style="border-radius:12px" src="https://open.spotify.com/embed/track/${id}?utm_source=generator&theme=0" width="400" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>`;
+          homeContent.insertAdjacentHTML('beforeend', track);
+          dragElement(document.querySelector('#randomTrack'));
+        })
+        .catch(err => {
+          console.log('Oops, something went wrong');
+        });
+    };
+};
+
 randomBtns.forEach(btn => btn.addEventListener('click', randomize));
 homeBtns.forEach(btn => btn.addEventListener('click', reloadHome));
 menuBtns.forEach(btn => btn.addEventListener('click', chooseTrack));
+
+getRandomTrack();
