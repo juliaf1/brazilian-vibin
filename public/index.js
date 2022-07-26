@@ -2,8 +2,10 @@ const randomBtns = document.querySelectorAll('.random');
 const homeBtns = document.querySelectorAll('.home');
 const menuBtns = document.querySelectorAll('.menu');
 const home = document.querySelector('.home-container');
+const homeContent = document.querySelector('.home-content');
 const playlist = document.querySelector('.playlist-container');
 const playlistCardsDiv = document.querySelector('.playlist-cards');
+const loader = document.getElementById("loader");
 
 
 // Cursor
@@ -126,6 +128,11 @@ const mapTrackData = ({ id, name, album, artists }) => {
     };
 };
 
+function loadPage() {
+    loader.classList.add('d-none');
+    playlist.classList.remove('d-none');
+};
+
 const randomize = () => {
   const cards = playlistCardsDiv.querySelectorAll('.playlist-card');
   if (cards.length > 0) {
@@ -134,15 +141,18 @@ const randomize = () => {
     home.classList.add('d-none');
     playlist.classList.remove('d-none');
   } else {
-    // TODO: add loading screen
+    homeContent.classList.add('blur');
+    loader.classList.remove('d-none');
     axios.get('/api/random')
       .then(res => {
-        // TODO: kill loading screen
+        homeContent.classList.remove('blur');
+        loadPage();
         handlePlaylistData(res.data);
       })
       .catch(err => {
-        // TODO: kill loading screen
         // TODO: add sweet alert
+        homeContent.classList.remove('blur');
+        loader.classList.add('d-none');
         console.log('Oops, something went wrong');
       });
   };
