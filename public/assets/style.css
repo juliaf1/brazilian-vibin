@@ -20,6 +20,10 @@ body, a, p {
 
 /* Utility Classes */
 
+.d-none {
+    display: none;
+}
+
 .secondary-font {
     font-family: 'Edu TAS Beginner', cursive;
     font-weight: 400;
