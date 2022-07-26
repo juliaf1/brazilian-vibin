@@ -20,7 +20,7 @@ body, a, p {
 /* Utility Classes */
 
 .d-none {
-    display: none;
+    display: none !important;
 }
 
 .secondary-font {
@@ -280,7 +280,7 @@ body, a, p {
 }
 
 .track-container {
-    max-width: 600px;
+    width: 60%;
 }
 
 .track-genres {
@@ -299,5 +299,11 @@ body, a, p {
 @media only screen and (max-width: 768px) {
     .lg-font {
         font-size: calc(40px + 0.390625vw);
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .track-container {
+        max-width: 600px;
     }
 }
