@@ -16,8 +16,8 @@ app.use('/assets', express.static(path.join(__dirname, '../public/assets')));
 // DEV - SEED
 app.post('/seed', seed);
 
-app.get('/random', random);
-app.get('/randomTrack', randomTrack);
+app.get('/api/random', random);
+app.get('/api/randomTrack', randomTrack);
 
 const port = secrets.PORT || 3000;
 app.listen(port, () => console.log(`up on ${port}`));
