@@ -119,7 +119,7 @@ body, a, p {
     background-position: bottom left;
     background-repeat: no-repeat;
     background-size: 0% 2px;
-    transition: all .5s ease;
+    transition: all .6s ease-in-out;
 }
 
 .underline-span:hover {
