@@ -1,18 +1,132 @@
-#title {
-    color: red;
+/* Default styling */
+
+body {
+    margin: 0;
 }
 
-.h-font {
+h1 {
+    margin: 0;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Utility Classes */
+
+.secondary-font {
     font-family: 'Edu TAS Beginner', cursive;
     font-weight: 400;
 }
 
-.p-font {
+.primary-font {
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
 }
 
-.p-font-bold {
+.primary-font-md {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+.primary-font-bold {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
+}
+
+.light-color {
+    color: #FFF8EB;
+}
+
+.sm-font {
+    font-size: 16px;
+}
+
+.md-font {
+    font-size: 24px;
+}
+
+.lg-font {
+    font-size: 48px;
+}
+
+.xlg-font {
+    font-size: 64px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mb-sm {
+    margin-bottom: 6px;
+}
+
+.mb-md {
+    margin-bottom: 12px;
+}
+
+.mb-lg {
+    margin-bottom: 20px;
+}
+
+/* Reusable Components */
+
+.primary-btn {
+    background-color: #FFF8EB;
+    color: #253C78;
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 2px;
+}
+
+.primary-btn {
+    margin-left: 4px;
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    color: #131f3e;
+    background-color: #FFF8EB;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    padding: 6px 16px;
+}
+  
+.primary-btn:hover {
+    background-color: #d36582;
+    box-shadow: 0px 15px 20px rgba(211, 101, 130, 0.4);
+    color: #FFF8EB;
+    transform: translateY(-7px);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+}
+
+.underline-span {
+    border-bottom: 2px solid #d36582;
+    display: inline-block;
+}
+
+/* Custom layout */
+
+.main {
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(100% 225% at 0% 100%, #FF04F5 0%, #001AFF 100%), linear-gradient(270deg, #FB00A5 50%, #0400CB 100%), linear-gradient(300deg, #8DADA4 0%, #32DE81 100%), linear-gradient(7deg, #1DADFE 0%, #16009A 50%);
+    background-blend-mode: color-dodge, color-burn, color-burn, normal;
+}
+
+.home-container {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100% - 80px);
 }
