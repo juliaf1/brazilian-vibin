@@ -30,7 +30,7 @@ const random = async (req, res) => {
             if (trackRes.success) {
                 artist.track = trackRes.data.sample();
             } else {
-                console.log(res.data, trackRes.status);
+                console.log(trackRes.data, trackRes.status);
             };
             
             artists.push(artist);

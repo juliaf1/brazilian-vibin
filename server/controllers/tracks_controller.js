@@ -9,9 +9,9 @@ const randomTrack = async (req, res) => {
     try {
         const trackRes = await getTracks(id);
         if (trackRes.success) {
-            res.status(200).send(tracksRes.data.sample());
+            res.status(200).send(trackRes.data.sample());
         } else {
-            console.log(res.data, trackRes.status);
+            console.log(trackRes.data, trackRes.status);
         };
     } catch (error) {
         console.log('Error finding random track', error);
