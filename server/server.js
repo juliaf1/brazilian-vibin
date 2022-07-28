@@ -4,7 +4,7 @@ const cors = require('cors');
 
 const { secrets } = require('./config.js');
 const { seed } = require('./seed.js');
-const { random } = require('./controllers/artists_controller');
+const { randomPlaylist } = require('./controllers/playlists_controller');
 const { randomTrack } = require('./controllers/tracks_controller');
 
 const app = express();
@@ -16,8 +16,8 @@ app.use('/assets', express.static(path.join(__dirname, '../public/assets')));
 // DEV - SEED
 app.post('/seed', seed);
 
-app.get('/api/random', random);
-app.get('/api/randomTrack', randomTrack);
+app.get('/api/playlist/random', randomPlaylist);
+app.get('/api/track/random', randomTrack);
 
 const port = secrets.PORT || 3000;
 app.listen(port, () => console.log(`up on ${port}`));
