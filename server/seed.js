@@ -26,6 +26,20 @@ const seed = (req, res) => {
                 admin boolean default false
             );
 
+            create table playlists {
+                playlist_id serial primary key,
+                user_id integer,
+                foreign_key(user_id) references users(user_id)
+            };
+
+            create table playlist_tracks {
+                playlist_track_id serial primary key,
+                spotify_track_id integer not null,
+                spotify_artist_id integer not null,
+                playlist_id integer not null,
+                foreign_key(playlist_id) references playlistsplaylist_id)
+            };
+
             insert into artists (name, spotify_id)
             values ('Gilberto Gil', '7oEkUINVIj1Nr3Wnj8tzqr'),
                 ('Maria Bethânia', '3f5VCwd57gZsqMad28jyLV'),
