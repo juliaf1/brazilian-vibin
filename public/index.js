@@ -143,7 +143,7 @@ const randomize = () => {
   } else {
     homeContent.classList.add('blur');
     loader.classList.remove('d-none');
-    axios.get('/api/random')
+    axios.get('/api/playlist/random')
       .then(res => {
         homeContent.classList.remove('blur');
         loadPage();
@@ -168,7 +168,7 @@ const chooseTrack = evt => {
 const getRandomTrack = () => {
     let track = document.querySelector('#randomTrack');
     if (!track) {
-      axios.get('/api/randomTrack')
+      axios.get('/api/track/random')
         .then(res => {
           const { id } = res.data;
           track = `<iframe class="draggable" id="randomTrack" style="border-radius:12px" src="https://open.spotify.com/embed/track/${id}?utm_source=generator&theme=0" width="400" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>`;
