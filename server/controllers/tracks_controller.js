@@ -1,19 +1,20 @@
 const axios = require('axios');
-const { sequelize } = require('../config.js');
-const { authorizationHeaders } = require('../services/spotify.js');
-
-const spotifyUrl = 'https://api.spotify.com/v1';
+const { Artist } = require('../models/artist.js');
+const { getTracks } = require('../services/spotify.js');
 
 const randomTrack = async (req, res) => {
-    const ids = await sequelize.query(`select spotify_id from artists`);
-    const id = ids[0].sample().spotify_id;
-    const headers = await authorizationHeaders();
+    const ids = await Artist.findAll('spotify_id');
+    const id = ids.sample().spotify_id;
 
     try {
-        const tracksRes = await axios.get(`${spotifyUrl}/artists/${id}/top-tracks?market=BR`, headers);
-        res.status(200).send(tracksRes.data.tracks.sample());
-    } catch {
-        console.log('Error finding random track');
+        const trackRes = await getTracks(id);
+        if (trackRes.success) {
+            res.status(200).send(tracksRes.data.sample());
+        } else {
+            console.log(res.data, trackRes.status);
+        };
+    } catch (error) {
+        console.log('Error finding random track', error);
         res.sendStatus(400);
     };
 };
