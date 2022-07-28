@@ -15,7 +15,6 @@ const random = async (req, res) => {
         while (!uniq) {
             id = ids.sample().spotify_id;
         };
-
         randomIds.push(id);
         let artist = {};
 
