@@ -1,17 +1,14 @@
 const axios = require('axios');
 const { sequelize } = require('../config.js');
-const { getArtist } = require('../services/spotify.js');
+const { getArtist, getTracks } = require('../services/spotify.js');
 
 const random = async (req, res) => {
-    // const { genres } = req.query;
     const maxSize = req.query.maxSize || 5;
 
     const ids = await sequelize.query(`select spotify_id from artists`);
     
     let artists = [];
     let randomIds = [];
-
-    // const headers = await authorizationHeaders();
 
     while (randomIds.length < maxSize) {
         let id = ids[0].sample().spotify_id;
@@ -24,12 +21,21 @@ const random = async (req, res) => {
         let artist = {};
 
         try {
-            const tracksRes = await getArtist(id);
-            console.log(tracksRes);
-            // const artistRes = await axios.get(`${spotifyUrl}/artists/${id}`, headers)
-            // artist.track = tracksRes.data.tracks.sample();
-            // artist.info = artistRes.data;
-            // artists.push(artist);
+            const artistRes = await getArtist(id);
+            if (artistRes.success) {
+                artist.info = artistRes.data;
+            } else {
+                console.log(artistRes.data, artistRes.status);
+            };
+
+            const trackRes = await getTracks(id);
+            if (trackRes.success) {
+                artist.track = trackRes.data.sample();
+            } else {
+                console.log(res.data, trackRes.status);
+            };
+            
+            artists.push(artist);
         } catch {
             console.log('Error finding artist and track');
         };
