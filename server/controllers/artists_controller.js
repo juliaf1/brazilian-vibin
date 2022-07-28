@@ -1,10 +1,9 @@
 const axios = require('axios');
 const { Artist } = require('../models/artist.js');
-const { getArtist, getTracks } = require('../services/spotify.js');
+const { getArtist, listArtists, getTracks } = require('../services/spotify.js');
 
 const random = async (req, res) => {
     const maxSize = req.query.maxSize || 5;
-
     const ids = await Artist.findAll('spotify_id');
     
     let artists = [];
@@ -40,6 +39,14 @@ const random = async (req, res) => {
             console.log('Error finding artist and track', error);
         };
     };
+
+    // Code refactor getting all artists in one request
+    // try {
+    //     const res = await listArtists(randomIds);
+    //     console.log(res);
+    // } catch (error) {
+    //     console.log(error);
+    // };
 
     res.status(200).send(artists);
 };

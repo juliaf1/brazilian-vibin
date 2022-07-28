@@ -53,6 +53,17 @@ const getArtist = async (id) => {
     };
 };
 
+const listArtists = async (ids) => {
+    const headers = await authorizationHeaders();
+    const query = qs.stringify({'ids': ids.join(',')});
+    try {
+        const res = await axios.get(`${spotify_url}/artists?${query}`, headers);
+        return { data: res.data.artists, success: true };
+    } catch (error) {
+        return { data: error.response.data, status: error.response.status };
+    };
+};
+
 const getTracks = async (artist_id) => {
     const headers = await authorizationHeaders();
     try {
@@ -65,5 +76,6 @@ const getTracks = async (artist_id) => {
 
 module.exports = {
     getArtist,
+    listArtists,
     getTracks
 };
