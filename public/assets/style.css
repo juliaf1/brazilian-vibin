@@ -213,6 +213,12 @@ body, a, p {
     50% { background-position: 100% 50%; }
 }
 
+.draggable {
+    position: absolute;
+    top: 160px;
+    right: 100px;
+}
+
 /* Custom layout */
 
 .home-container {
