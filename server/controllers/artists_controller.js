@@ -1,20 +1,20 @@
 const axios = require('axios');
-const { sequelize } = require('../config.js');
+const { Artist } = require('../models/artist.js');
 const { getArtist, getTracks } = require('../services/spotify.js');
 
 const random = async (req, res) => {
     const maxSize = req.query.maxSize || 5;
 
-    const ids = await sequelize.query(`select spotify_id from artists`);
+    const ids = await Artist.findAll('spotify_id');
     
     let artists = [];
     let randomIds = [];
 
     while (randomIds.length < maxSize) {
-        let id = ids[0].sample().spotify_id;
+        let id = ids.sample().spotify_id;
         let uniq = randomIds.indexOf(id) === -1;
         while (!uniq) {
-            id = ids[0].sample().spotify_id;
+            id = ids.sample().spotify_id;
         };
 
         randomIds.push(id);
@@ -36,8 +36,8 @@ const random = async (req, res) => {
             };
             
             artists.push(artist);
-        } catch {
-            console.log('Error finding artist and track');
+        } catch (error) {
+            console.log('Error finding artist and track', error);
         };
     };
 
